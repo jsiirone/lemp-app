@@ -2,11 +2,20 @@
 import requests
 import mysql.connector
 from datetime import datetime
-API_KEY = 'WEATHER_API_KEY'
-PASSWORD = 'WEATHER_USER_PASSWORD'
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+#print(os.environ.get("WEATHER_API_KEY"))
+#print(os.environ.get("WEATHER_USER_PASSWORD"))
+
+API_KEY = os.getenv("WEATHER_API_KEY")
+PASSWORD = os.getenv ("WEATHER_USER_PASSWORD")
 CITY = 'Helsinki'
 URL = f'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}&units=metric'
-conn = mysql.connector.connect(host='localhost', user='weatheruser', password='PASSWORD', database='weather_db')
+
+conn = mysql.connector.connect(host='localhost', user='weatheruser', password=PASSWORD, database='weather_db')
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS weather_data (id INT 
 AUTO_INCREMENT PRIMARY KEY, city VARCHAR(50), temperature FLOAT, description

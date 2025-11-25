@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /home/ubuntu/lemp-app || exit 1
 # Polku virtuaaliympäristöön
 VENV_DIR="venv"
 # Luo virtuaaliympäristö, jos ei ole olemassa
