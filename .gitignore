@@ -22,5 +22,4 @@ Thumbs.db
 secrets.toml
 .env
 env
-**/.env
-.env*
+**/*.env
